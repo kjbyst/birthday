@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Happy Birthday My Love! ❤️</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Caveat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+            hand: ['"Caveat"', 'cursive']
+          },
+          colors: {
+            rose: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              800: '#9f1239',
+              900: '#881337',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background: radial-gradient(circle at 50% 20%, #2b0b17 0%, #120308 100%);
+      color: #fff1f2;
+      overflow-x: hidden;
+      user-select: none;
+    }
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(244, 63, 94, 0.15);
+    }
+    .glow-text {
+      text-shadow: 0 0 20px rgba(244, 63, 94, 0.6), 0 0 40px rgba(244, 63, 94, 0.2);
+    }
+    .candle-flame {
+      background: radial-gradient(ellipse at bottom, #fff7ed 0%, #fbbf24 35%, #f97316 70%, transparent 100%);
+      filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.9)) drop-shadow(0 0 28px rgba(249, 115, 22, 0.6));
+      animation: flicker 1.2s infinite alternate ease-in-out;
+      transform-origin: center bottom;
+    }
+    @keyframes flicker {
+      0% { transform: scale(1) rotate(-1deg); opacity: 0.95; }
+      25% { transform: scale(1.08, 0.96) rotate(1.5deg); opacity: 1; }
+      50% { transform: scale(0.95, 1.05) rotate(-1.5deg); opacity: 0.88; }
+      75% { transform: scale(1.04, 1.02) rotate(1deg); opacity: 0.96; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .smoke-puff {
+      animation: smokeRise 1.8s forwards ease-out;
+    }
+    @keyframes smokeRise {
+      0% { opacity: 0.8; transform: translateY(0) scale(1); filter: blur(2px); }
+      100% { opacity: 0; transform: translateY(-70px) scale(2.5); filter: blur(8px); }
+    }
+    .bg-heart-particle {
+      position: absolute;
+      pointer-events: none;
+      animation: floatUp 8s infinite linear;
+      opacity: 0.15;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(110vh) scale(0.6) rotate(0deg); opacity: 0; }
+      15% { opacity: 0.25; }
+      85% { opacity: 0.25; }
+      100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+    }
+
+    .voucher-card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(46, 12, 24, 0.92) 0%, rgba(26, 6, 14, 0.95) 100%);
+      border: 1px solid rgba(244, 63, 94, 0.28);
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(244, 63, 94, 0.1);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .voucher-card:hover {
+      border-color: rgba(244, 63, 94, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 30px rgba(244, 63, 94, 0.22);
+    }
+
+    .notch-top {
+      position: absolute;
+      top: -9px;
+      left: var(--notch-pos, 130px);
+      transform: translateX(-50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #19050e;
+      border-bottom: 1px solid rgba(244, 63, 94, 0.4);
+      box-shadow: inset 0 -3px 4px rgba(0,0,0,0.5);
+      z-index: 10;
+    }
+    .notch-bottom {
+      position: absolute;
+      bottom: -9px;
+      left: var(--notch-pos, 130px);
+      transform: translateX(-50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #17040d;
+      border-top: 1px solid rgba(244, 63, 94, 0.4);
+      box-shadow: inset 0 3px 4px rgba(0,0,0,0.5);
+      z-index: 10;
+    }
+
+    .voucher-divider {
+      border-left: 2px dashed rgba(244, 63, 94, 0.35);
+    }
+
+    #btn-no {
+      position: relative;
+      display: inline-flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      touch-action: none;
+      z-index: 30;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 relative font-sans">
+
+<div class="fixed inset-0 pointer-events-none overflow-hidden z-0" id="ambient-particles"></div>
+
+<!-- Header Navigation -->
+<header class="fixed top-6 left-1/2 -translate-x-1/2 z-40 w-full max-w-md px-4">
+<div class="glass-panel rounded-full px-5 py-2.5 flex items-center justify-between text-xs tracking-wider uppercase text-rose-200/80">
+<span class="font-medium text-rose-300" id="step-label">Phase 1: A Special Gift</span>
+<div class="flex items-center space-x-2">
+<button class="p-1 focus:outline-none cursor-pointer" onclick="goToStep(1)" title="Phase 1"><div class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-[0_0_8px_#f43f5e] transition-all duration-300" id="dot-1"></div></button>
+<button class="p-1 focus:outline-none cursor-pointer" onclick="goToStep(2)" title="Phase 2"><div class="w-2 h-2 rounded-full bg-white/20 transition-all duration-300" id="dot-2"></div></button>
+<button class="p-1 focus:outline-none cursor-pointer" onclick="goToStep(3)" title="Phase 3"><div class="w-2 h-2 rounded-full bg-white/20 transition-all duration-300" id="dot-3"></div></button>
+<button class="p-1 focus:outline-none cursor-pointer" onclick="goToStep(4)" title="Phase 4"><div class="w-2 h-2 rounded-full bg-white/20 transition-all duration-300" id="dot-4"></div></button>
+</div>
+</div>
+</header>
+
+<!-- STEP 1 -->
+<section class="relative z-10 w-full max-w-3xl min-h-[600px] flex flex-col items-center justify-center text-center transition-all duration-700 pt-16 md:pt-12" id="step-1">
+<div class="mb-3">
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30 backdrop-blur-md">
+        ✨ Sentuh Hatiku Untuk Membuka Kejutan ✨
+      </span>
+</div>
+<h1 class="text-4xl md:text-5xl font-serif font-bold text-white mb-2 glow-text">
+      Untuk Istriku Tercinta
+    </h1>
+<p class="text-rose-200/80 text-sm md:text-base max-w-md mb-4 font-light">
+      Di hari spesialmu ini, ada segelintir cinta yang tersimpan di dalam hati 3D ini. Klik hati merah di bawah ini ya sayang...
+    </p>
+<div class="relative w-full max-w-lg h-[380px] md:h-[440px] flex items-center justify-center cursor-pointer group select-none" id="three-container" onclick="explodeHeart()">
+<div class="w-full h-full relative flex items-center justify-center" id="canvas-wrapper"></div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 pointer-events-none bg-rose-950/70 border border-rose-500/40 text-rose-200 text-xs px-4 py-1.5 rounded-full flex items-center gap-2 backdrop-blur-md shadow-lg group-hover:scale-105 transition-transform duration-300">
+<svg class="w-3.5 h-3.5 text-rose-400 animate-bounce" fill="currentColor" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+<span>Klik hatinya sekarang!</span>
+</div>
+</div>
+</section>
+
+<!-- STEP 2 -->
+<section class="hidden relative z-10 w-full max-w-xl text-center glass-panel p-8 md:p-12 rounded-3xl transition-all duration-700" id="step-2">
+<div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-3xl shadow-[0_0_30px_rgba(244,63,94,0.3)]">
+      🥺
+    </div>
+<span class="text-rose-400 uppercase tracking-widest text-xs font-bold mb-2 block">Ujian Kejujuran Pasutri</span>
+<h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-3">
+      Sayang Ga Mbek Aku?
+    </h2>
+<p class="text-rose-200/80 text-sm md:text-base mb-8 max-w-md mx-auto font-light">
+      Jawab jujur dari lubuk hati yang paling dalam ya bojo ku tercinta. Jangan sampai salah pilih lho... 👀
+    </p>
+<div class="flex flex-col items-center justify-center mb-8">
+<button class="w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-rose-500 via-rose-600 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-bold rounded-2xl shadow-[0_10px_30px_rgba(244,63,94,0.55)] hover:shadow-[0_15px_40px_rgba(244,63,94,0.75)] transform hover:-translate-y-1 active:translate-y-0 transition-all duration-200 text-lg md:text-xl flex items-center justify-center gap-3 group cursor-pointer" id="btn-yes" onclick="answerYes()">
+<span>Sayang banget muah muah!</span>
+<span class="text-2xl group-hover:scale-130 transition-transform">💋❤️</span>
+</button>
+</div>
+<div class="pt-6 border-t border-white/10 flex flex-col items-center justify-center relative min-h-[110px]" id="runaway-container">
+<p class="text-[11px] uppercase tracking-wider text-rose-300/40 mb-3">Pilihan Lain (Jika Berani):</p>
+<button class="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/15 text-rose-200/90 border border-white/20 rounded-xl font-medium text-xs md:text-sm cursor-pointer select-none shadow-md whitespace-nowrap" id="btn-no" onclick="dodgeButton(event)" onmouseenter="dodgeButton(event)" onpointerdown="dodgeButton(event)" onpointerenter="dodgeButton(event)" ontouchstart="dodgeButton(event)">
+  Enggak, dirimu koyok pulu-pulu 😜
+</button>
+</div>
+<div class="mt-4 text-xs text-rose-400 font-medium h-6 transition-opacity opacity-0" id="dodge-alert">
+      Ups, tombol "Enggak" nya minder gamau disentuh! 😜
+</div>
+</section>
+
+<!-- STEP 3 -->
+<section class="hidden relative z-10 w-full max-w-3xl glass-panel p-6 md:p-10 rounded-3xl transition-all duration-700" id="step-3">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<div class="md:col-span-5 flex flex-col items-center justify-center p-4 text-center border-b md:border-b-0 md:border-r border-white/10 pb-8 md:pb-0 md:pr-8">
+<span class="text-xs uppercase font-bold text-rose-400 tracking-wider mb-2">Ritual Tiup Lilin</span>
+<h3 class="text-xl font-bold text-white mb-6 font-serif">Make a Wish, Sayang! ✨</h3>
+<div class="relative w-48 h-56 flex flex-col items-center justify-end group">
+<div class="relative flex flex-col items-center mb-1 cursor-pointer" id="candle-unit" onclick="blowCandle()">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none hidden" id="smoke-container">
+<div class="smoke-puff w-4 h-8 rounded-full bg-white/40"></div>
+</div>
+<div class="candle-flame w-6 h-9 rounded-full mb-1" id="flame"></div>
+<div class="w-1 h-2.5 bg-neutral-800 rounded-t"></div>
+<div class="w-4 h-16 bg-gradient-to-r from-rose-200 via-pink-100 to-rose-300 rounded-t-sm shadow-inner border border-rose-300/60 relative overflow-hidden">
+<div class="absolute inset-0 opacity-40 bg-[repeating-linear-gradient(45deg,transparent,transparent_4px,#f43f5e_4px,#f43f5e_8px)]"></div>
+</div>
+</div>
+<div class="w-32 h-14 bg-gradient-to-b from-rose-400 to-rose-600 rounded-t-2xl relative shadow-md flex items-center justify-center">
+<div class="absolute -top-1 inset-x-0 h-3 bg-white/70 rounded-full blur-[1px]"></div>
+<span class="text-xs font-serif text-white tracking-widest font-bold drop-shadow">HBD ISTRIKU</span>
+</div>
+<div class="w-44 h-18 bg-gradient-to-b from-rose-700 to-rose-900 rounded-t-2xl relative shadow-xl border-t-2 border-rose-400/40">
+<div class="absolute -top-2 inset-x-2 flex justify-between">
+<div class="w-4 h-5 bg-rose-400 rounded-b-full"></div>
+<div class="w-5 h-7 bg-rose-400 rounded-b-full"></div>
+<div class="w-4 h-4 bg-rose-400 rounded-b-full"></div>
+<div class="w-6 h-6 bg-rose-400 rounded-b-full"></div>
+<div class="w-4 h-5 bg-rose-400 rounded-b-full"></div>
+</div>
+</div>
+<div class="w-52 h-4 bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-300 rounded-full shadow-lg border border-yellow-400/50"></div>
+</div>
+<div class="mt-6">
+<button class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-rose-200 hover:text-white flex items-center gap-2 transition-all cursor-pointer" id="btn-blow" onclick="blowCandle()">
+<span id="blow-icon">💨</span>
+<span id="blow-text">Klik Lilin / Tombol Ini Untuk Tiup</span>
+</button>
+</div>
+</div>
+<div class="md:col-span-7 flex flex-col">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs uppercase font-bold text-rose-400 tracking-wider">Surat Cinta Untukmu 💌</span>
+<button class="text-xs text-rose-300/80 hover:text-rose-100 flex items-center gap-1 bg-white/5 px-2.5 py-1 rounded-lg border border-white/10 transition cursor-pointer" id="btn-edit-note" onclick="toggleEditNote()">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span id="edit-note-text">Edit Pesan</span>
+</button>
+</div>
+<div class="relative bg-gradient-to-br from-[#fffdfa] to-[#fdf6ee] text-slate-800 p-6 md:p-7 rounded-2xl shadow-xl border border-amber-200/50 min-h-[260px] flex flex-col justify-between">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-rose-600 shadow-md border-2 border-white flex items-center justify-center text-white text-[10px]">❤️</div>
+<div class="font-hand text-xl md:text-2xl leading-relaxed text-rose-950 whitespace-pre-line overflow-y-auto max-h-[220px] pr-2" id="note-display">
+Selamat Ulang Tahun, Istriku Sayang! 🌸🎂
+
+Terima kasih sudah menjadi bidadari paling sabar, partner hidup paling seru, dan rumah ternyaman untuk pulang setiap hari. 
+
+Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yang melimpah, rezeki yang berkah, dan semua impianmu tercapai. Jangan capek-capek ya, ingat suamimu ini selalu ada buat jagain dan dukung kamu selamanya. I love you to the moon and back! 💕
+          </div>
+<textarea class="hidden w-full h-[200px] p-3 text-sm font-sans bg-white/80 border border-rose-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-400 resize-none" id="note-input"></textarea>
+<div class="mt-4 pt-3 border-t border-rose-900/10 flex items-center justify-between text-xs font-hand text-xl text-rose-800">
+<span>Dari Suamimu yang Paling Ganteng,</span>
+<span class="font-bold">Forever Yours ❤️</span>
+</div>
+</div>
+<div class="mt-6 flex justify-end">
+<button class="px-6 py-3 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-semibold rounded-xl shadow-lg flex items-center gap-2 group transition-all cursor-pointer" onclick="goToStep4()">
+<span>Klaim Kado &amp; Kupon Cinta</span>
+<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STEP 4 -->
+<section class="hidden relative z-10 w-full max-w-4xl glass-panel p-6 md:p-10 rounded-3xl transition-all duration-700" id="step-4">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-6 border-b border-white/10 gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="text-xs uppercase font-extrabold text-rose-400 tracking-wider">OFFICIAL LOVE STORE • VOUCHER CENTER 🎟️</span>
+</div>
+<h2 class="text-2xl md:text-3xl font-serif font-bold text-white flex items-center gap-2">
+<span>Kupon &amp; Kado Spesial Istri</span>
+<span class="text-xs font-sans font-normal px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">VIP Pass</span>
+</h2>
+<p class="text-rose-200/70 text-xs md:text-sm mt-1">
+          Koleksi voucher resmi kasih sayang suami. Kupon berlaku seumur hidup &amp; wajib dipenuhi suami 100% tanpa syarat!
+        </p>
+</div>
+<button class="px-4 py-2.5 bg-gradient-to-r from-rose-600/30 to-pink-600/30 hover:from-rose-600/50 hover:to-pink-600/50 border border-rose-400/40 text-rose-100 hover:text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all shadow-md self-start md:self-auto cursor-pointer" onclick="openAddCouponModal()">
+<svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>+ Buat Kupon Baru (Suami Input)</span>
+</button>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8" id="coupons-grid">
+<!-- Voucher 1 -->
+<div class="voucher-card rounded-2xl flex flex-row overflow-hidden relative" style="--notch-pos: 120px;">
+<button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-300/40 hover:text-rose-200 text-xs bg-black/30 hover:bg-rose-900/50 w-5 h-5 rounded-full flex items-center justify-center transition z-20 cursor-pointer" title="Hapus Voucher">✕</button>
+<div class="notch-top"></div>
+<div class="notch-bottom"></div>
+<div class="w-[120px] shrink-0 bg-gradient-to-b from-rose-600 via-rose-700 to-pink-800 p-4 flex flex-col items-center justify-center text-center relative border-r border-rose-400/20">
+<span class="text-2xl mb-1">💆‍♀️</span>
+<span class="text-white font-extrabold text-lg leading-tight tracking-tight">100%<br/><span class="text-xs tracking-wider text-rose-200 uppercase font-sans">GRATIS</span></span>
+<div class="mt-2 text-[9px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+  RELAX VIP
+</div>
+</div>
+<div class="flex-1 p-4 pl-5 flex flex-col justify-between voucher-divider">
+<div>
+<div class="flex items-center justify-between gap-2 mb-1.5 pr-4">
+<span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/15 border border-amber-400/30 px-2 py-0.5 rounded">
+      SPESIAL ULANG TAHUN
+    </span>
+<span class="text-[10px] text-rose-200/60 font-mono">CODE: PIJAT-60M</span>
+</div>
+<h4 class="text-sm md:text-base font-bold text-white font-sans tracking-tight">
+    VOUCHER PIJAT 60 MENIT
+  </h4>
+<p class="text-rose-200/70 text-xs mt-1 leading-snug">
+    Bebas minta pijat bahu, leher, punggung, atau kaki kapan saja saat capek. Full service suami!
+  </p>
+<div class="flex flex-wrap items-center gap-2 text-[10px] text-rose-300/80 mt-2 font-light">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Min. Belanja: 0 Sayang</span>
+<span>•</span>
+<span>Berlaku Selamanya</span>
+</div>
+</div>
+<div class="mt-3.5 pt-3 border-t border-white/10 flex items-center justify-between gap-3">
+<span class="text-[10px] text-rose-300/50 italic">S&amp;K: Suami wajib siap &amp; tersenyum</span>
+<button class="claim-btn px-4 py-1.5 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold text-xs rounded-lg shadow-md hover:shadow-rose-500/30 transition-all flex items-center gap-1.5 shrink-0 cursor-pointer" onclick="claimCoupon(this, 'Pijat 60 Menit')">
+<span>KLAIM SEKARANG</span>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Voucher 2 -->
+<div class="voucher-card rounded-2xl flex flex-row overflow-hidden relative" style="--notch-pos: 120px;">
+<button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-300/40 hover:text-rose-200 text-xs bg-black/30 hover:bg-rose-900/50 w-5 h-5 rounded-full flex items-center justify-center transition z-20 cursor-pointer" title="Hapus Voucher">✕</button>
+<div class="notch-top"></div>
+<div class="notch-bottom"></div>
+<div class="w-[120px] shrink-0 bg-gradient-to-b from-amber-600 via-rose-700 to-rose-800 p-4 flex flex-col items-center justify-center text-center relative border-r border-rose-400/20">
+<span class="text-2xl mb-1">👑🍽️</span>
+<span class="text-white font-extrabold text-base leading-tight tracking-tight">TRAKTIR<br/><span class="text-xs tracking-wider text-amber-200 uppercase font-sans">KENYANG</span></span>
+<div class="mt-2 text-[9px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+  FOOD PASS
+</div>
+</div>
+<div class="flex-1 p-4 pl-5 flex flex-col justify-between voucher-divider">
+<div>
+<div class="flex items-center justify-between gap-2 mb-1.5 pr-4">
+<span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/15 border border-amber-400/30 px-2 py-0.5 rounded">
+      GRATIS ONGKIR &amp; MAKAN
+    </span>
+<span class="text-[10px] text-rose-200/60 font-mono">CODE: BEBAS-MAKAN</span>
+</div>
+<h4 class="text-sm md:text-base font-bold text-white font-sans tracking-tight">
+    BEBAS PILIH MAKANAN &amp; RESTO
+  </h4>
+<p class="text-rose-200/70 text-xs mt-1 leading-snug">
+    Suami dilarang bilang "terserah". Istri bebas pilih resto / cafe favorit, suami siap bayar dan temani.
+  </p>
+<div class="flex flex-wrap items-center gap-2 text-[10px] text-rose-300/80 mt-2 font-light">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Tanpa Batas Porsi</span>
+<span>•</span>
+<span>Sampai Kakek Nenek</span>
+</div>
+</div>
+<div class="mt-3.5 pt-3 border-t border-white/10 flex items-center justify-between gap-3">
+<span class="text-[10px] text-rose-300/50 italic">S&amp;K: Suami wajib bersedia bayar</span>
+<button class="claim-btn px-4 py-1.5 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold text-xs rounded-lg shadow-md hover:shadow-rose-500/30 transition-all flex items-center gap-1.5 shrink-0 cursor-pointer" onclick="claimCoupon(this, 'Bebas Pilih Makanan')">
+<span>KLAIM SEKARANG</span>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Voucher 3 -->
+<div class="voucher-card rounded-2xl flex flex-row overflow-hidden relative" style="--notch-pos: 120px;">
+<button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-300/40 hover:text-rose-200 text-xs bg-black/30 hover:bg-rose-900/50 w-5 h-5 rounded-full flex items-center justify-center transition z-20 cursor-pointer" title="Hapus Voucher">✕</button>
+<div class="notch-top"></div>
+<div class="notch-bottom"></div>
+<div class="w-[120px] shrink-0 bg-gradient-to-b from-purple-700 via-rose-700 to-pink-800 p-4 flex flex-col items-center justify-center text-center relative border-r border-rose-400/20">
+<span class="text-2xl mb-1">🧹💤</span>
+<span class="text-white font-extrabold text-base leading-tight tracking-tight">LIBUR<br/><span class="text-xs tracking-wider text-purple-200 uppercase font-sans">TOTAL</span></span>
+<div class="mt-2 text-[9px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+  REBAHAN DAY
+</div>
+</div>
+<div class="flex-1 p-4 pl-5 flex flex-col justify-between voucher-divider">
+<div>
+<div class="flex items-center justify-between gap-2 mb-1.5 pr-4">
+<span class="text-[10px] font-bold uppercase tracking-wider text-purple-300 bg-purple-400/15 border border-purple-400/30 px-2 py-0.5 rounded">
+      QUEEN SERVICE
+    </span>
+<span class="text-[10px] text-rose-200/60 font-mono">CODE: LIBUR-BEBERES</span>
+</div>
+<h4 class="text-sm md:text-base font-bold text-white font-sans tracking-tight">
+    LIBUR TOTAL BEBERES RUMAH
+  </h4>
+<p class="text-rose-200/70 text-xs mt-1 leading-snug">
+    Seharian cuma boleh santai drakoran / me-time. Urusan cuci piring, baju &amp; nyapu di-handle suamimu!
+  </p>
+<div class="flex flex-wrap items-center gap-2 text-[10px] text-rose-300/80 mt-2 font-light">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Min. Usaha: 0%</span>
+<span>•</span>
+<span>Masa Berlaku: Selamanya</span>
+</div>
+</div>
+<div class="mt-3.5 pt-3 border-t border-white/10 flex items-center justify-between gap-3">
+<span class="text-[10px] text-rose-300/50 italic">S&amp;K: Istri dilarang bantuin</span>
+<button class="claim-btn px-4 py-1.5 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold text-xs rounded-lg shadow-md hover:shadow-rose-500/30 transition-all flex items-center gap-1.5 shrink-0 cursor-pointer" onclick="claimCoupon(this, 'Libur Beberes Rumah')">
+<span>KLAIM SEKARANG</span>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Voucher 4 -->
+<div class="voucher-card rounded-2xl flex flex-row overflow-hidden relative" style="--notch-pos: 120px;">
+<button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-300/40 hover:text-rose-200 text-xs bg-black/30 hover:bg-rose-900/50 w-5 h-5 rounded-full flex items-center justify-center transition z-20 cursor-pointer" title="Hapus Voucher">✕</button>
+<div class="notch-top"></div>
+<div class="notch-bottom"></div>
+<div class="w-[120px] shrink-0 bg-gradient-to-b from-rose-500 via-pink-600 to-rose-800 p-4 flex flex-col items-center justify-center text-center relative border-r border-rose-400/20">
+<span class="text-2xl mb-1">🛍️✨</span>
+<span class="text-white font-extrabold text-base leading-tight tracking-tight">SHOPPING<br/><span class="text-xs tracking-wider text-rose-200 uppercase font-sans">SPREE</span></span>
+<div class="mt-2 text-[9px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+  SULTANAH
+</div>
+</div>
+<div class="flex-1 p-4 pl-5 flex flex-col justify-between voucher-divider">
+<div>
+<div class="flex items-center justify-between gap-2 mb-1.5 pr-4">
+<span class="text-[10px] font-bold uppercase tracking-wider text-pink-300 bg-pink-400/15 border border-pink-400/30 px-2 py-0.5 rounded">
+      UNLIMITED LOVE
+    </span>
+<span class="text-[10px] text-rose-200/60 font-mono">CODE: BELANJA-SERU</span>
+</div>
+<h4 class="text-sm md:text-base font-bold text-white font-sans tracking-tight">
+    JALAN-JALAN &amp; BELANJA SEPUASNYA
+  </h4>
+<p class="text-rose-200/70 text-xs mt-1 leading-snug">
+    Suami siap jadi supir pribadi, bawain kantong belanjaan dan setia nemenin keliling mall tanpa komplain!
+  </p>
+<div class="flex flex-wrap items-center gap-2 text-[10px] text-rose-300/80 mt-2 font-light">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Cashback: Senyuman Manis</span>
+<span>•</span>
+<span>Aktif Seumur Hidup</span>
+</div>
+</div>
+<div class="mt-3.5 pt-3 border-t border-white/10 flex items-center justify-between gap-3">
+<span class="text-[10px] text-rose-300/50 italic">S&amp;K: Suami sabar level maksimal</span>
+<button class="claim-btn px-4 py-1.5 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold text-xs rounded-lg shadow-md hover:shadow-rose-500/30 transition-all flex items-center gap-1.5 shrink-0 cursor-pointer" onclick="claimCoupon(this, 'Jalan-Jalan Belanja')">
+<span>KLAIM SEKARANG</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-white/10 text-xs text-rose-300/70 gap-3">
+<div class="flex items-center gap-2">
+<span>Dibuat dengan segenap rasa cinta oleh suamimu yang tersayang 💕</span>
+</div>
+<button class="hover:text-white underline transition cursor-pointer" onclick="restartExperience()">
+        Ulangi Pengalaman Dari Awal
+</button>
+</div>
+</section>
+
+<!-- MODAL ADD COUPON -->
+<div class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 hidden" id="add-coupon-modal">
+<div class="glass-panel w-full max-w-md p-6 rounded-3xl bg-[#240813] border border-rose-500/40 text-left shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold text-white font-serif flex items-center gap-2">
+<span>🎟️ Buat Voucher E-Commerce Cinta</span>
+</h3>
+<button class="text-rose-300 hover:text-white text-lg cursor-pointer" onclick="closeAddCouponModal()">✕</button>
+</div>
+<div class="space-y-4 text-xs">
+<div>
+<label class="block text-rose-200 font-semibold mb-1">Judul Voucher / Hadiah</label>
+<input class="w-full p-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-rose-300/40 focus:outline-none focus:ring-2 focus:ring-rose-500" id="modal-coupon-title" placeholder="Contoh: Voucher Liburan &amp; Healing Berdua" type="text"/>
+</div>
+<div>
+<label class="block text-rose-200 font-semibold mb-1">Deskripsi / Janji Suami</label>
+<textarea class="w-full p-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-rose-300/40 focus:outline-none focus:ring-2 focus:ring-rose-500 resize-none" id="modal-coupon-desc" placeholder="Contoh: Suami siap siapin tiket, packing koper, dan nyetir mobil kemanapun istri mau..." rows="3"></textarea>
+</div>
+<div>
+<label class="block text-rose-200 font-semibold mb-1">Badge Teks Sisi Kiri (Singkat)</label>
+<input class="w-full p-2 rounded-xl bg-white/10 border border-white/20 text-white placeholder-rose-300/40 focus:outline-none focus:ring-2 focus:ring-rose-500" id="modal-coupon-badge" placeholder="Contoh: HEALING 100%" type="text"/>
+</div>
+<div>
+<label class="block text-rose-200 font-semibold mb-1">Pilih Icon Emoji</label>
+<div class="flex gap-2">
+<button class="emoji-opt w-9 h-9 rounded-lg bg-white/10 hover:bg-rose-500/30 border border-white/20 flex items-center justify-center text-lg active-emoji ring-2 ring-rose-500" onclick="selectEmoji(this)" type="button">🏝️</button>
+<button class="emoji-opt w-9 h-9 rounded-lg bg-white/10 hover:bg-rose-500/30 border border-white/20 flex items-center justify-center text-lg" onclick="selectEmoji(this)" type="button">☕</button>
+<button class="emoji-opt w-9 h-9 rounded-lg bg-white/10 hover:bg-rose-500/30 border border-white/20 flex items-center justify-center text-lg" onclick="selectEmoji(this)" type="button">🎬</button>
+<button class="emoji-opt w-9 h-9 rounded-lg bg-white/10 hover:bg-rose-500/30 border border-white/20 flex items-center justify-center text-lg" onclick="selectEmoji(this)" type="button">💐</button>
+<button class="emoji-opt w-9 h-9 rounded-lg bg-white/10 hover:bg-rose-500/30 border border-white/20 flex items-center justify-center text-lg" onclick="selectEmoji(this)" type="button">🚗</button>
+</div>
+</div>
+</div>
+<div class="mt-6 flex justify-end gap-2">
+<button class="px-4 py-2 rounded-xl text-rose-200 hover:text-white bg-white/5 text-xs font-semibold cursor-pointer" onclick="closeAddCouponModal()">
+          Batal
+</button>
+<button class="px-5 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold shadow-lg shadow-rose-600/40 cursor-pointer" onclick="saveNewCoupon()">
+          Terbitkan Voucher
+</button>
+</div>
+</div>
+</div>
+
+<script>
+    // --- State variables for locks ---
+    let currentStep = 1;
+    let step1Completed = false; // Heart clicked
+    let step2Completed = false; // "Sayang banget" clicked
+    let candleBlown = false;    // Candle blown in Step 3
+
+    // --- Ambient Particle Creator ---
+    const ambientContainer = document.getElementById('ambient-particles');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'bg-heart-particle';
+      p.innerHTML = '❤️';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDelay = (Math.random() * 8) + 's';
+      p.style.fontSize = (Math.random() * 20 + 14) + 'px';
+      ambientContainer.appendChild(p);
+    }
+
+    // --- Web Audio Synthesizer ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function playTone(freq, type = 'sine', duration = 0.2, gainVal = 0.15) {
+      try {
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function playCelebrationChime() {
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((note, i) => {
+        setTimeout(() => playTone(note, 'triangle', 0.5, 0.2), i * 140);
+      });
+    }
+
+    function playPop() {
+      playTone(400, 'sine', 0.08, 0.2);
+    }
+
+    function playKissSound() {
+      playTone(880, 'sine', 0.15, 0.15);
+      setTimeout(() => playTone(1200, 'sine', 0.25, 0.15), 100);
+    }
+
+    // --- THREE.JS 3D HEART SCENE ---
+    let scene, camera, renderer, heartMesh;
+    let particlesGroup;
+    let isExploded = false;
+    const container = document.getElementById('canvas-wrapper');
+
+    function initThree() {
+      const width = container.clientWidth || 400;
+      const height = container.clientHeight || 400;
+
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
+      camera.position.set(0, 0, 240);
+
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.innerHTML = '';
+      container.appendChild(renderer.domElement);
+
+      const ambientLight = new THREE.AmbientLight(0xffcad4, 1.2);
+      scene.add(ambientLight);
+
+      const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.4);
+      dirLight1.position.set(50, 80, 100);
+      scene.add(dirLight1);
+
+      const dirLight2 = new THREE.DirectionalLight(0xff758f, 0.8);
+      dirLight2.position.set(-60, -40, 50);
+      scene.add(dirLight2);
+
+      const pointLight = new THREE.PointLight(0xf43f5e, 3, 300);
+      pointLight.position.set(0, 10, 80);
+      scene.add(pointLight);
+
+      const heartShape = new THREE.Shape();
+      const x = 0, y = 0;
+      heartShape.moveTo( x + 25, y + 25 );
+      heartShape.bezierCurveTo( x + 25, y + 25, x + 20, y, x, y );
+      heartShape.bezierCurveTo( x - 30, y, x - 30, y + 35, x - 30, y + 35 );
+      heartShape.bezierCurveTo( x - 30, y + 55, x - 10, y + 77, x + 25, y + 100 );
+      heartShape.bezierCurveTo( x + 60, y + 77, x + 80, y + 55, x + 80, y + 35 );
+      heartShape.bezierCurveTo( x + 80, y + 35, x + 80, y, x + 50, y );
+      heartShape.bezierCurveTo( x + 35, y, x + 25, y + 25, x + 25, y + 25 );
+
+      const extrudeSettings = {
+        depth: 18,
+        bevelEnabled: true,
+        bevelSegments: 6,
+        steps: 2,
+        bevelSize: 5,
+        bevelThickness: 5
+      };
+
+      const geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+      geometry.center();
+
+      const material = new THREE.MeshPhysicalMaterial({
+        color: 0xe11d48,
+        emissive: 0x881337,
+        emissiveIntensity: 0.35,
+        roughness: 0.18,
+        metalness: 0.15,
+        clearcoat: 0.9,
+        clearcoatRoughness: 0.1
+      });
+
+      heartMesh = new THREE.Mesh(geometry, material);
+      heartMesh.rotation.z = Math.PI;
+      scene.add(heartMesh);
+
+      let clock = new THREE.Clock();
+      function animate() {
+        requestAnimationFrame(animate);
+        const elapsedTime = clock.getElapsedTime();
+
+        if (heartMesh && !isExploded) {
+          heartMesh.rotation.y = Math.sin(elapsedTime * 1.5) * 0.35;
+          heartMesh.rotation.x = Math.sin(elapsedTime * 1.8) * 0.08;
+          const pulse = 1 + Math.sin(elapsedTime * 3) * 0.05;
+          heartMesh.scale.set(pulse, pulse, pulse);
+        }
+
+        if (particlesGroup && isExploded) {
+          particlesGroup.children.forEach(p => {
+            p.position.add(p.velocity);
+            p.rotation.x += p.rotSpeed.x;
+            p.rotation.y += p.rotSpeed.y;
+            p.scale.multiplyScalar(0.982);
+          });
+        }
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        if (!container) return;
+        const newW = container.clientWidth;
+        const newH = container.clientHeight;
+        if (newW && newH) {
+          camera.aspect = newW / newH;
+          camera.updateProjectionMatrix();
+          renderer.setSize(newW, newH);
+        }
+      });
+    }
+
+    function explodeHeart() {
+      if (isExploded) return;
+      isExploded = true;
+      step1Completed = true; // Unlocks step 2
+      playPop();
+
+      confetti({
+        particleCount: 90,
+        spread: 100,
+        origin: { y: 0.6 },
+        colors: ['#f43f5e', '#fb7185', '#fda4af', '#ffffff']
+      });
+
+      scene.remove(heartMesh);
+
+      particlesGroup = new THREE.Group();
+      scene.add(particlesGroup);
+
+      const miniGeo = new THREE.SphereGeometry(3, 8, 8);
+      const miniMat = new THREE.MeshStandardMaterial({
+        color: 0xf43f5e,
+        roughness: 0.3,
+        metalness: 0.2
+      });
+
+      for (let i = 0; i < 75; i++) {
+        const mini = new THREE.Mesh(miniGeo, miniMat);
+        mini.position.set(0, 0, 0);
+        mini.velocity = new THREE.Vector3(
+          (Math.random() - 0.5) * 4.5,
+          (Math.random() - 0.5) * 4.5,
+          (Math.random() - 0.5) * 4.5
+        );
+        mini.rotSpeed = {
+          x: (Math.random() - 0.5) * 0.2,
+          y: (Math.random() - 0.5) * 0.2
+        };
+        const s = Math.random() * 0.9 + 0.4;
+        mini.scale.set(s, s, s);
+        particlesGroup.add(mini);
+      }
+
+      setTimeout(() => {
+        goToStep2();
+      }, 1100);
+    }
+
+    // --- NAVIGATION LOGIC WITH STEP LOCKING ---
+    function canAccessStep(num) {
+      if (num === 1) return true;
+      if (num === 2) return step1Completed;
+      if (num === 3) return step1Completed && step2Completed;
+      if (num === 4) return step1Completed && step2Completed && candleBlown;
+      return false;
+    }
+
+    function updateProgress(stepNum, label) {
+      document.getElementById('step-label').innerText = label;
+      for (let i = 1; i <= 4; i++) {
+        const dot = document.getElementById(`dot-${i}`);
+        if (i <= stepNum) {
+          dot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 shadow-[0_0_8px_#f43f5e] transition-all duration-300';
+        } else {
+          dot.className = 'w-2 h-2 rounded-full bg-white/20 transition-all duration-300';
+        }
+      }
+    }
+
+    function goToStep(num) {
+      // Check lock requirement
+      if (!canAccessStep(num)) {
+        if (currentStep === 1 && !step1Completed) {
+          alert("Selesaikan Phase 1 dulu ya sayang! Klik hati merahnya dulu ❤️");
+        } else if (currentStep === 2 && !step2Completed) {
+          alert("Jawab dulu pertanyaannya dong di Phase 2! 😉");
+        } else if (currentStep === 3 && !candleBlown) {
+          alert("Meniup lilin dulu di Phase 3 ya sayang! ✨");
+        }
+        return;
+      }
+
+      currentStep = num;
+      [1, 2, 3, 4].forEach(i => {
+        const el = document.getElementById(`step-${i}`);
+        if (el) el.classList.add('hidden');
+      });
+      const target = document.getElementById(`step-${num}`);
+      if (target) target.classList.remove('hidden');
+
+      const labels = {
+        1: 'Phase 1: A Special Gift',
+        2: 'Phase 2: Pertanyaan Keramat',
+        3: 'Phase 3: Tiup Lilin & Surat Cinta',
+        4: 'Phase 4: Voucher & Kupon Cinta'
+      };
+      updateProgress(num, labels[num]);
+
+      resetRunawayBtn();
+    }
+
+    function goToStep2() {
+      goToStep(2);
+    }
+
+    // --- RUNAWAY BUTTON LOGIC ---
+    let dodgeCount = 0;
+    let isMoving = false;
+    let currentDodgeIndex = -1;
+    const dodgeAlert = document.getElementById('dodge-alert');
+    const btnNo = document.getElementById('btn-no');
+
+    const safeOffsets = [
+      { x: -140, y: -25 },
+      { x: 140, y: -25 },
+      { x: -160, y: 35 },
+      { x: 160, y: 35 },
+      { x: 0, y: -45 },
+      { x: -120, y: 15 },
+      { x: 130, y: -15 },
+      { x: -70, y: 40 },
+      { x: 70, y: -40 }
+    ];
+
+    const funnyQuotes = [
+      'Eits gak kena! 😜',
+      'Coba kejar lagi! 🏃‍♂️',
+      'Kok ngejar terus? wkwk',
+      'Gabisa diklik dong 😝',
+      'Pilih sayang aja napa sih! 😘',
+      'Enggak, dirimu koyok pulu-pulu 🤪'
+    ];
+
+    function resetRunawayBtn() {
+      isMoving = false;
+      dodgeCount = 0;
+      currentDodgeIndex = -1;
+      if (btnNo) {
+        btnNo.style.transform = 'translate(0px, 0px)';
+        btnNo.style.opacity = '1';
+        btnNo.style.visibility = 'visible';
+        btnNo.style.display = 'inline-flex';
+        btnNo.innerText = "Enggak, dirimu koyok pulu-pulu 😜";
+      }
+      if (dodgeAlert) {
+        dodgeAlert.style.opacity = '0';
+      }
+    }
+
+    function dodgeButton(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      
+      const step2 = document.getElementById('step-2');
+      if (!step2 || step2.classList.contains('hidden')) return;
+
+      if (isMoving) return;
+      isMoving = true;
+      setTimeout(() => { isMoving = false; }, 220);
+
+      dodgeCount++;
+      playPop();
+
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * safeOffsets.length);
+      } while (nextIndex === currentDodgeIndex && safeOffsets.length > 1);
+
+      currentDodgeIndex = nextIndex;
+      const offset = safeOffsets[currentDodgeIndex];
+
+      const isMobile = window.innerWidth < 640;
+      const factor = isMobile ? 0.65 : 1.0;
+      const targetX = Math.round(offset.x * factor);
+      const targetY = Math.round(offset.y * factor);
+
+      btnNo.style.display = 'inline-flex';
+      btnNo.style.visibility = 'visible';
+      btnNo.style.opacity = '1';
+      btnNo.style.transform = `translate(${targetX}px, ${targetY}px)`;
+
+      btnNo.innerText = funnyQuotes[(dodgeCount - 1) % funnyQuotes.length];
+
+      const alertMsgs = [
+        "Eits, tombolnya kabur gamau dipilih! 😝",
+        "Tombol 'Enggak' auto lari menghindar! 🏃‍♂️💨",
+        "Yakin mau bilang pulu-pulu? Tombolnya mogok! 😂",
+        "Udah deh klik yang tengah aja: Sayang banget muah muah! ❤️",
+        "Semakin dikejar semakin ngacir tombolnya! 😜",
+        "Hahaha kabur lagi! Gak bakal bisa diklik! 🚀"
+      ];
+      if (dodgeAlert) {
+        dodgeAlert.innerText = alertMsgs[(dodgeCount - 1) % alertMsgs.length];
+        dodgeAlert.style.opacity = '1';
+      }
+    }
+
+    function handlePointerProximity(e) {
+      const step2 = document.getElementById('step-2');
+      if (!step2 || step2.classList.contains('hidden') || isMoving) return;
+
+      const rect = btnNo.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+
+      const btnCenterX = rect.left + rect.width / 2;
+      const btnCenterY = rect.top + rect.height / 2;
+      const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
+
+      if (dist < 55) {
+        dodgeButton(e);
+      }
+    }
+
+    window.addEventListener('mousemove', handlePointerProximity, { passive: true });
+    window.addEventListener('pointermove', handlePointerProximity, { passive: true });
+
+    function answerYes() {
+      step2Completed = true; // Unlocks step 3
+      playKissSound();
+      confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.5 },
+        colors: ['#e11d48', '#ff4d6d', '#ff758f', '#ffffff']
+      });
+
+      resetRunawayBtn();
+
+      setTimeout(() => {
+        goToStep3();
+      }, 900);
+    }
+
+    function goToStep3() {
+      goToStep(3);
+    }
+
+    // --- CANDLE BLOW LOGIC ---
+    function blowCandle() {
+      if (candleBlown) return;
+      candleBlown = true; // Unlocks step 4
+      playTone(320, 'sine', 0.4, 0.1);
+
+      const flame = document.getElementById('flame');
+      flame.style.display = 'none';
+      const smoke = document.getElementById('smoke-container');
+      smoke.classList.remove('hidden');
+
+      const btnText = document.getElementById('blow-text');
+      const btnIcon = document.getElementById('blow-icon');
+      btnText.innerText = "Lilin Sudah Meniup! Harapanmu Terkabul ✨";
+      btnIcon.innerText = "🎉";
+
+      playCelebrationChime();
+      confetti({
+        particleCount: 120,
+        spread: 120,
+        origin: { y: 0.4 },
+        colors: ['#fbbf24', '#f43f5e', '#ffffff', '#fb7185']
+      });
+    }
+
+    // --- NOTE EDITING LOGIC ---
+    let isEditingNote = false;
+    const noteDisplay = document.getElementById('note-display');
+    const noteInput = document.getElementById('note-input');
+    const editBtnText = document.getElementById('edit-note-text');
+
+    function toggleEditNote() {
+      isEditingNote = !isEditingNote;
+      if (isEditingNote) {
+        noteInput.value = noteDisplay.innerText.trim();
+        noteDisplay.classList.add('hidden');
+        noteInput.classList.remove('hidden');
+        noteInput.focus();
+        editBtnText.innerText = "Simpan Pesan";
+      } else {
+        if (noteInput.value.trim() !== '') {
+          noteDisplay.innerText = noteInput.value.trim();
+        }
+        noteInput.classList.add('hidden');
+        noteDisplay.classList.remove('hidden');
+        editBtnText.innerText = "Edit Pesan";
+        playTone(600, 'sine', 0.1, 0.1);
+      }
+    }
+
+    function goToStep4() {
+      goToStep(4);
+    }
+
+    // --- REMOVE COUPON LOGIC ---
+    function removeCoupon(btn) {
+      const card = btn.closest('.voucher-card');
+      if (card) {
+        card.style.transition = "all 0.3s ease";
+        card.style.opacity = "0";
+        card.style.transform = "scale(0.8)";
+        setTimeout(() => {
+          card.remove();
+        }, 300);
+      }
+    }
+
+    // --- E-COMMERCE COUPON CLAIM LOGIC ---
+    function claimCoupon(btn, couponName) {
+      playKissSound();
+      confetti({
+        particleCount: 75,
+        spread: 70,
+        origin: { y: 0.65 },
+        colors: ['#10b981', '#f43f5e', '#ffffff', '#fbbf24']
+      });
+
+      btn.disabled = true;
+      btn.className = "claim-btn px-4 py-1.5 bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold rounded-lg flex items-center gap-1.5 cursor-default shadow-sm transition-all";
+      btn.innerHTML = `<svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg><span>TERKLAIM / PAKAI</span>`;
+    }
+
+    // --- ADD CUSTOM COUPON MODAL & LOGIC ---
+    let selectedEmojiChar = "🏝️";
+
+    function openAddCouponModal() {
+      document.getElementById('add-coupon-modal').classList.remove('hidden');
+    }
+
+    function closeAddCouponModal() {
+      document.getElementById('add-coupon-modal').classList.add('hidden');
+    }
+
+    function selectEmoji(btn) {
+      document.querySelectorAll('.emoji-opt').forEach(b => {
+        b.classList.remove('active-emoji', 'ring-2', 'ring-rose-500');
+      });
+      btn.classList.add('active-emoji', 'ring-2', 'ring-rose-500');
+      selectedEmojiChar = btn.innerText;
+    }
+
+    function saveNewCoupon() {
+      const title = document.getElementById('modal-coupon-title').value.trim();
+      const desc = document.getElementById('modal-coupon-desc').value.trim();
+      const badge = document.getElementById('modal-coupon-badge').value.trim() || 'SPECIAL GIFT';
+
+      if (!title) {
+        alert("Mohon masukkan judul voucher ya!");
+        return;
+      }
+
+      const grid = document.getElementById('coupons-grid');
+      const count = grid.children.length + 1;
+      const code = 'VCR-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+
+      const voucherCard = document.createElement('div');
+      voucherCard.className = "voucher-card rounded-2xl flex flex-row overflow-hidden relative animate-in fade-in zoom-in-95";
+      voucherCard.style.setProperty('--notch-pos', '120px');
+      voucherCard.innerHTML = `
+        <button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-300/40 hover:text-rose-200 text-xs bg-black/30 hover:bg-rose-900/50 w-5 h-5 rounded-full flex items-center justify-center transition z-20 cursor-pointer" title="Hapus Voucher">✕</button>
+        <div class="notch-top"></div>
+        <div class="notch-bottom"></div>
+        
+        <div class="w-[120px] shrink-0 bg-gradient-to-b from-pink-600 via-rose-700 to-rose-900 p-4 flex flex-col items-center justify-center text-center relative border-r border-rose-400/20">
+          <span class="text-2xl mb-1">${selectedEmojiChar}</span>
+          <span class="text-white font-extrabold text-sm leading-tight tracking-tight">${badge.toUpperCase()}</span>
+          <div class="mt-2 text-[9px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+            PASS #${count}
+          </div>
+        </div>
+
+        <div class="flex-1 p-4 pl-5 flex flex-col justify-between voucher-divider">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-1.5 pr-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/15 border border-amber-400/30 px-2 py-0.5 rounded">
+                KADO SPESIAL SUAMI
+              </span>
+              <span class="text-[10px] text-rose-200/60 font-mono">${code}</span>
+            </div>
+            <h4 class="text-sm md:text-base font-bold text-white font-sans tracking-tight">
+              ${title.toUpperCase()}
+            </h4>
+            <p class="text-rose-200/70 text-xs mt-1 leading-snug">
+              ${desc || 'Voucher kasih sayang spesial yang dibuat khusus oleh suamimu tercinta.'}
+            </p>
+            <div class="flex flex-wrap items-center gap-2 text-[10px] text-rose-300/80 mt-2 font-light">
+              <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Min. Belanja: 0 Sayang</span>
+              <span>•</span>
+              <span>Berlaku Selamanya</span>
+            </div>
+          </div>
+
+          <div class="mt-3.5 pt-3 border-t border-white/10 flex items-center justify-between gap-3">
+            <span class="text-[10px] text-rose-300/50 italic">S&amp;K: Suami wajib turuti tanpa syarat</span>
+            <button class="claim-btn px-4 py-1.5 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold text-xs rounded-lg shadow-md hover:shadow-rose-500/30 transition-all flex items-center gap-1.5 shrink-0 cursor-pointer" onclick="claimCoupon(this, '${title.replace(/'/g, "\\'")}')">
+              <span>KLAIM SEKARANG</span>
+            </button>
+          </div>
+        </div>
+      `;
+
+      grid.appendChild(voucherCard);
+      closeAddCouponModal();
+
+      document.getElementById('modal-coupon-title').value = '';
+      document.getElementById('modal-coupon-desc').value = '';
+      document.getElementById('modal-coupon-badge').value = '';
+
+      playTone(500, 'triangle', 0.2);
+    }
+
+    function restartExperience() {
+      location.reload();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initThree();
+    });
+  </script>
+</body>
+</html>

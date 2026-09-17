@@ -37,20 +37,28 @@
   </script>
 <style>
     body {
-      background: radial-gradient(circle at 50% 20%, #2b0b17 0%, #120308 100%);
-      color: #fff1f2;
+      background: radial-gradient(circle at 50% 0%, #fff5f8 0%, #ffe4ee 45%, #ffd1e3 100%);
+      color: #9f1239;
       overflow-x: hidden;
       user-select: none;
     }
     .glass-panel {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.65);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(244, 63, 94, 0.15);
+      border: 1px solid rgba(244, 63, 94, 0.18);
+      box-shadow: 0 25px 50px -12px rgba(244, 63, 94, 0.18), 0 0 40px rgba(244, 63, 94, 0.08);
     }
     .glow-text {
-      text-shadow: 0 0 20px rgba(244, 63, 94, 0.6), 0 0 40px rgba(244, 63, 94, 0.2);
+      text-shadow: 0 2px 18px rgba(244, 63, 94, 0.25), 0 0 2px rgba(255,255,255,0.8);
+    }
+    .floral-deco {
+      position: fixed;
+      pointer-events: none;
+      opacity: 0.5;
+      filter: drop-shadow(0 4px 10px rgba(244,63,94,0.15));
+      z-index: 1;
+      user-select: none;
     }
     .candle-flame {
       background: radial-gradient(ellipse at bottom, #fff7ed 0%, #fbbf24 35%, #f97316 70%, transparent 100%);
@@ -76,7 +84,7 @@
       position: absolute;
       pointer-events: none;
       animation: floatUp 8s infinite linear;
-      opacity: 0.15;
+      opacity: 0.35;
     }
     @keyframes floatUp {
       0% { transform: translateY(110vh) scale(0.6) rotate(0deg); opacity: 0; }
@@ -87,15 +95,15 @@
 
     .voucher-card {
       position: relative;
-      background: linear-gradient(135deg, rgba(46, 12, 24, 0.92) 0%, rgba(26, 6, 14, 0.95) 100%);
-      border: 1px solid rgba(244, 63, 94, 0.28);
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(244, 63, 94, 0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 241, 245, 0.98) 100%);
+      border: 1px solid rgba(244, 63, 94, 0.22);
+      box-shadow: 0 10px 30px -5px rgba(244, 63, 94, 0.15), 0 0 20px rgba(244, 63, 94, 0.06);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .voucher-card:hover {
-      border-color: rgba(244, 63, 94, 0.6);
+      border-color: rgba(244, 63, 94, 0.5);
       transform: translateY(-2px);
-      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 30px rgba(244, 63, 94, 0.22);
+      box-shadow: 0 15px 35px -5px rgba(244, 63, 94, 0.25), 0 0 30px rgba(244, 63, 94, 0.15);
     }
 
     /* Responsive Notch & Divider untuk Mobile vs Desktop */
@@ -108,9 +116,9 @@
         width: 18px;
         height: 18px;
         border-radius: 50%;
-        background: #19050e;
-        border-bottom: 1px solid rgba(244, 63, 94, 0.4);
-        box-shadow: inset 0 -3px 4px rgba(0,0,0,0.5);
+        background: #ffd1e3;
+        border-bottom: 1px solid rgba(244, 63, 94, 0.3);
+        box-shadow: inset 0 -3px 4px rgba(244,63,94,0.12);
         z-index: 10;
       }
       .notch-bottom {
@@ -121,9 +129,9 @@
         width: 18px;
         height: 18px;
         border-radius: 50%;
-        background: #17040d;
-        border-top: 1px solid rgba(244, 63, 94, 0.4);
-        box-shadow: inset 0 3px 4px rgba(0,0,0,0.5);
+        background: #ffd1e3;
+        border-top: 1px solid rgba(244, 63, 94, 0.3);
+        box-shadow: inset 0 3px 4px rgba(244,63,94,0.12);
         z-index: 10;
       }
       .notch-left, .notch-right { display: none; }
@@ -142,9 +150,9 @@
         width: 18px;
         height: 18px;
         border-radius: 50%;
-        background: #19050e;
-        border-right: 1px solid rgba(244, 63, 94, 0.4);
-        box-shadow: inset -3px 0 4px rgba(0,0,0,0.5);
+        background: #ffd1e3;
+        border-right: 1px solid rgba(244, 63, 94, 0.3);
+        box-shadow: inset -3px 0 4px rgba(244,63,94,0.12);
         z-index: 10;
       }
       .notch-right {
@@ -155,9 +163,9 @@
         width: 18px;
         height: 18px;
         border-radius: 50%;
-        background: #17040d;
-        border-left: 1px solid rgba(244, 63, 94, 0.4);
-        box-shadow: inset 3px 0 4px rgba(0,0,0,0.5);
+        background: #ffd1e3;
+        border-left: 1px solid rgba(244, 63, 94, 0.3);
+        box-shadow: inset 3px 0 4px rgba(244,63,94,0.12);
         z-index: 10;
       }
       .notch-top, .notch-bottom { display: none; }
@@ -187,7 +195,7 @@
 
 <!-- Tombol kontrol musik -->
 <button id="music-toggle-btn" onclick="toggleBgMusic()" title="Nyalakan/Matikan Musik"
-  class="fixed bottom-4 right-4 z-50 glass-panel rounded-full w-11 h-11 flex items-center justify-center text-rose-200 hover:text-rose-100 transition-all cursor-pointer shadow-lg">
+  class="fixed bottom-4 right-4 z-50 glass-panel rounded-full w-11 h-11 flex items-center justify-center text-rose-600 hover:text-rose-800 transition-all cursor-pointer shadow-lg">
   <span id="music-icon">🔇</span>
 </button>
 
@@ -249,15 +257,21 @@
 
 <div class="fixed inset-0 pointer-events-none overflow-hidden z-0" id="ambient-particles"></div>
 
+<!-- Dekorasi bunga di sudut layar -->
+<div class="floral-deco text-4xl sm:text-5xl -top-2 -left-3 sm:-top-3 sm:-left-4 rotate-[-15deg]">🌸</div>
+<div class="floral-deco text-3xl sm:text-4xl top-2 right-2 sm:top-4 sm:right-6 rotate-[20deg]">🌷</div>
+<div class="floral-deco text-3xl sm:text-4xl bottom-2 left-2 sm:bottom-6 sm:left-6 rotate-[10deg]">🌺</div>
+<div class="floral-deco text-4xl sm:text-5xl -bottom-2 -right-3 sm:-bottom-3 sm:-right-4 rotate-[-20deg]">🌸</div>
+
 <!-- Header Navigation -->
 <header class="fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-40 w-full max-w-xs sm:max-w-md px-2 sm:px-4">
-<div class="glass-panel rounded-full px-4 py-2 flex items-center justify-between text-[10px] sm:text-xs tracking-wider uppercase text-rose-200/80">
-<span class="font-medium text-rose-300 truncate mr-2" id="step-label">Phase 1: A Special Gift</span>
+<div class="glass-panel rounded-full px-4 py-2 flex items-center justify-between text-[10px] sm:text-xs tracking-wider uppercase text-rose-600/90">
+<span class="font-medium text-rose-600 truncate mr-2" id="step-label">Phase 1: A Special Gift</span>
 <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
 <button class="p-1 focus:outline-none cursor-pointer" onclick="goToStep(1)" title="Phase 1"><div class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-[0_0_8px_#f43f5e] transition-all duration-300" id="dot-1"></div></button>
-<button class="p-1 focus:outline-none cursor-pointer" onclick="goToStep(2)" title="Phase 2"><div class="w-2 h-2 rounded-full bg-white/20 transition-all duration-300" id="dot-2"></div></button>
-<button class="p-1 focus:outline-none cursor-pointer" onclick="goToStep(3)" title="Phase 3"><div class="w-2 h-2 rounded-full bg-white/20 transition-all duration-300" id="dot-3"></div></button>
-<button class="p-1 focus:outline-none cursor-pointer" onclick="goToStep(4)" title="Phase 4"><div class="w-2 h-2 rounded-full bg-white/20 transition-all duration-300" id="dot-4"></div></button>
+<button class="p-1 focus:outline-none cursor-pointer" onclick="goToStep(2)" title="Phase 2"><div class="w-2 h-2 rounded-full bg-rose-300/50 transition-all duration-300" id="dot-2"></div></button>
+<button class="p-1 focus:outline-none cursor-pointer" onclick="goToStep(3)" title="Phase 3"><div class="w-2 h-2 rounded-full bg-rose-300/50 transition-all duration-300" id="dot-3"></div></button>
+<button class="p-1 focus:outline-none cursor-pointer" onclick="goToStep(4)" title="Phase 4"><div class="w-2 h-2 rounded-full bg-rose-300/50 transition-all duration-300" id="dot-4"></div></button>
 </div>
 </div>
 </header>
@@ -265,19 +279,19 @@
 <!-- STEP 1 -->
 <section class="relative z-10 w-full max-w-3xl min-h-[500px] sm:min-h-[600px] flex flex-col items-center justify-center text-center transition-all duration-700 pt-12 sm:pt-16" id="step-1">
 <div class="mb-3 px-2">
-<span class="inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30 backdrop-blur-md">
-        ✨ Sentuh Hatiku Untuk Membuka Kejutan ✨
+<span class="inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold bg-white/70 text-rose-600 border border-rose-300/60 backdrop-blur-md shadow-sm">
+        🌸 Sentuh Hatiku Untuk Membuka Kejutan 🌸
       </span>
 </div>
-<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-2 glow-text px-2">
+<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-rose-800 mb-2 glow-text px-2">
       Untuk Istriku Tercinta
     </h1>
-<p class="text-rose-200/80 text-xs sm:text-base max-w-md mb-2 sm:mb-4 font-light px-4">
+<p class="text-rose-600/90 text-xs sm:text-base max-w-md mb-2 sm:mb-4 font-light px-4">
       Di hari spesialmu ini, ada segelintir cinta yang tersimpan di dalam hati 3D ini. Klik hati merah di bawah ini ya sayang...
     </p>
 <div class="relative w-full max-w-md h-[300px] sm:h-[380px] md:h-[440px] flex items-center justify-center cursor-pointer group select-none" id="three-container" onclick="explodeHeart()">
 <div class="w-full h-full relative flex items-center justify-center" id="canvas-wrapper"></div>
-<div class="absolute bottom-2 left-1/2 -translate-x-1/2 pointer-events-none bg-rose-950/70 border border-rose-500/40 text-rose-200 text-[10px] sm:text-xs px-3 py-1 sm:px-4 sm:py-1.5 rounded-full flex items-center gap-2 backdrop-blur-md shadow-lg group-hover:scale-105 transition-transform duration-300 whitespace-nowrap">
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 pointer-events-none bg-white/80 border border-rose-300/60 text-rose-600 text-[10px] sm:text-xs px-3 py-1 sm:px-4 sm:py-1.5 rounded-full flex items-center gap-2 backdrop-blur-md shadow-lg group-hover:scale-105 transition-transform duration-300 whitespace-nowrap">
 <svg class="w-3.5 h-3.5 text-rose-400 animate-bounce" fill="currentColor" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
 <span>Klik hatinya sekarang!</span>
 </div>
@@ -286,14 +300,14 @@
 
 <!-- STEP 2 -->
 <section class="hidden relative z-10 w-full max-w-xl text-center glass-panel p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl transition-all duration-700 my-auto" id="step-2">
-<div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-2xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-2xl sm:text-3xl shadow-[0_0_30px_rgba(244,63,94,0.3)]">
+<div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-2xl bg-rose-100 border border-rose-300/60 flex items-center justify-center text-2xl sm:text-3xl shadow-[0_0_30px_rgba(244,63,94,0.15)]">
       🥺
     </div>
-<span class="text-rose-400 uppercase tracking-widest text-[10px] sm:text-xs font-bold mb-1 sm:mb-2 block">Ujian Kejujuran Pasutri</span>
-<h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white mb-2 sm:mb-3">
+<span class="text-rose-600 uppercase tracking-widest text-[10px] sm:text-xs font-bold mb-1 sm:mb-2 block">Ujian Kejujuran Pasutri</span>
+<h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-rose-800 mb-2 sm:mb-3">
       Sayang Ga Mbek Aku?
     </h2>
-<p class="text-rose-200/80 text-xs sm:text-base mb-6 sm:mb-8 max-w-md mx-auto font-light">
+<p class="text-rose-600/90 text-xs sm:text-base mb-6 sm:mb-8 max-w-md mx-auto font-light">
       Jawab jujur dari lubuk hati yang paling dalam ya bojo ku tercinta. Jangan sampai salah pilih lho... 👀
     </p>
 <div class="flex flex-col items-center justify-center mb-6 sm:mb-8">
@@ -302,9 +316,9 @@
 <span class="text-xl sm:text-2xl group-hover:scale-130 transition-transform">💋❤️</span>
 </button>
 </div>
-<div class="pt-4 sm:pt-6 border-t border-white/10 flex flex-col items-center justify-center relative min-h-[100px] sm:min-h-[110px]" id="runaway-container">
-<p class="text-[10px] sm:text-[11px] uppercase tracking-wider text-rose-300/40 mb-2 sm:mb-3">Pilihan Lain (Jika Berani):</p>
-<button class="inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 bg-white/10 hover:bg-white/15 text-rose-200/90 border border-white/20 rounded-xl font-medium text-xs sm:text-sm cursor-pointer select-none shadow-md whitespace-nowrap" id="btn-no" onclick="dodgeButton(event)" onmouseenter="dodgeButton(event)" onpointerdown="dodgeButton(event)" onpointerenter="dodgeButton(event)" ontouchstart="dodgeButton(event)">
+<div class="pt-4 sm:pt-6 border-t border-rose-200/70 flex flex-col items-center justify-center relative min-h-[100px] sm:min-h-[110px]" id="runaway-container">
+<p class="text-[10px] sm:text-[11px] uppercase tracking-wider text-rose-400/70 mb-2 sm:mb-3">Pilihan Lain (Jika Berani):</p>
+<button class="inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-xl font-medium text-xs sm:text-sm cursor-pointer select-none shadow-md whitespace-nowrap" id="btn-no" onclick="dodgeButton(event)" onmouseenter="dodgeButton(event)" onpointerdown="dodgeButton(event)" onpointerenter="dodgeButton(event)" ontouchstart="dodgeButton(event)">
   Enggak, dirimu koyok pulu-pulu 😜
 </button>
 </div>
@@ -316,9 +330,9 @@
 <!-- STEP 3 -->
 <section class="hidden relative z-10 w-full max-w-3xl glass-panel p-4 sm:p-6 md:p-10 rounded-2xl sm:rounded-3xl transition-all duration-700 my-auto" id="step-3">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-<div class="md:col-span-5 flex flex-col items-center justify-center p-2 sm:p-4 text-center border-b md:border-b-0 md:border-r border-white/10 pb-6 md:pb-0 md:pr-8">
-<span class="text-[10px] sm:text-xs uppercase font-bold text-rose-400 tracking-wider mb-1 sm:mb-2">Ritual Tiup Lilin</span>
-<h3 class="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 font-serif">Make a Wish, Sayang! ✨</h3>
+<div class="md:col-span-5 flex flex-col items-center justify-center p-2 sm:p-4 text-center border-b md:border-b-0 md:border-r border-rose-200/70 pb-6 md:pb-0 md:pr-8">
+<span class="text-[10px] sm:text-xs uppercase font-bold text-rose-600 tracking-wider mb-1 sm:mb-2">Ritual Tiup Lilin</span>
+<h3 class="text-lg sm:text-xl font-bold text-rose-800 mb-4 sm:mb-6 font-serif">Make a Wish, Sayang! ✨</h3>
 <div class="relative w-40 sm:w-48 h-48 sm:h-56 flex flex-col items-center justify-end group">
 <div class="relative flex flex-col items-center mb-1 cursor-pointer" id="candle-unit" onclick="blowCandle()">
 <div class="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none hidden" id="smoke-container">
@@ -346,7 +360,7 @@
 <div class="w-44 sm:w-52 h-3.5 sm:h-4 bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-300 rounded-full shadow-lg border border-yellow-400/50"></div>
 </div>
 <div class="mt-4 sm:mt-6">
-<button class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-[11px] sm:text-xs font-semibold text-rose-200 hover:text-white flex items-center gap-2 transition-all cursor-pointer" id="btn-blow" onclick="blowCandle()">
+<button class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-rose-50 hover:bg-rose-100 border border-rose-200 text-[11px] sm:text-xs font-semibold text-rose-600 hover:text-rose-800 flex items-center gap-2 transition-all cursor-pointer" id="btn-blow" onclick="blowCandle()">
 <span id="blow-icon">💨</span>
 <span id="blow-text">Klik Lilin / Tombol Ini Untuk Tiup</span>
 </button>
@@ -354,8 +368,8 @@
 </div>
 <div class="md:col-span-7 flex flex-col">
 <div class="flex items-center justify-between mb-2 sm:mb-3">
-<span class="text-[10px] sm:text-xs uppercase font-bold text-rose-400 tracking-wider">Surat Cinta Untukmu 💌</span>
-<button class="text-[10px] sm:text-xs text-rose-300/80 hover:text-rose-100 flex items-center gap-1 bg-white/5 px-2.5 py-1 rounded-lg border border-white/10 transition cursor-pointer" id="btn-edit-note" onclick="toggleEditNote()">
+<span class="text-[10px] sm:text-xs uppercase font-bold text-rose-600 tracking-wider">Surat Cinta Untukmu 💌</span>
+<button class="text-[10px] sm:text-xs text-rose-500 hover:text-rose-700 flex items-center gap-1 bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-200 transition cursor-pointer" id="btn-edit-note" onclick="toggleEditNote()">
 <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 <span id="edit-note-text">Edit Pesan</span>
 </button>
@@ -387,22 +401,22 @@ Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yan
 
 <!-- STEP 4 -->
 <section class="hidden relative z-10 w-full max-w-4xl glass-panel p-4 sm:p-6 md:p-10 rounded-2xl sm:rounded-3xl transition-all duration-700 my-auto" id="step-4">
-<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-8 pb-4 sm:pb-6 border-b border-white/10 gap-3 sm:gap-4">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-8 pb-4 sm:pb-6 border-b border-rose-200/70 gap-3 sm:gap-4">
 <div>
 <div class="flex items-center gap-2 mb-1">
 <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-<span class="text-[10px] sm:text-xs uppercase font-extrabold text-rose-400 tracking-wider">OFFICIAL LOVE STORE • VOUCHER CENTER 🎟️</span>
+<span class="text-[10px] sm:text-xs uppercase font-extrabold text-rose-600 tracking-wider">OFFICIAL LOVE STORE • VOUCHER CENTER 🎟️</span>
 </div>
-<h2 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-white flex items-center gap-2 flex-wrap">
+<h2 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-rose-800 flex items-center gap-2 flex-wrap">
 <span>Kupon &amp; Kado Spesial Istri</span>
-<span class="text-[10px] font-sans font-normal px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">VIP Pass</span>
+<span class="text-[10px] font-sans font-normal px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-rose-100 text-rose-600 border border-rose-300/60">VIP Pass</span>
 </h2>
-<p class="text-rose-200/70 text-xs sm:text-sm mt-1">
+<p class="text-rose-600/80 text-xs sm:text-sm mt-1">
           Koleksi voucher resmi kasih sayang suami. Kupon berlaku seumur hidup &amp; wajib dipenuhi suami 100% tanpa syarat!
         </p>
 </div>
-<button class="px-3.5 py-2 sm:px-4 sm:py-2.5 bg-gradient-to-r from-rose-600/30 to-pink-600/30 hover:from-rose-600/50 hover:to-pink-600/50 border border-rose-400/40 text-rose-100 hover:text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md self-start sm:self-auto cursor-pointer shrink-0" onclick="openAddCouponModal()">
-<svg class="w-3.5 h-3.5 text-rose-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<button class="px-3.5 py-2 sm:px-4 sm:py-2.5 bg-gradient-to-r from-rose-200 to-pink-200 hover:from-rose-300 hover:to-pink-300 border border-rose-300/70 text-rose-700 hover:text-rose-900 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md self-start sm:self-auto cursor-pointer shrink-0" onclick="openAddCouponModal()">
+<svg class="w-3.5 h-3.5 text-rose-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 <span>+ Buat Kupon Baru</span>
 </button>
 </div>
@@ -410,42 +424,42 @@ Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yan
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mb-6 sm:mb-8" id="coupons-grid">
 <!-- Voucher 1 -->
 <div class="voucher-card rounded-2xl flex flex-col sm:flex-row overflow-hidden relative">
-<button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-300/60 hover:text-rose-200 text-xs bg-black/40 hover:bg-rose-900/60 w-6 h-6 rounded-full flex items-center justify-center transition z-20 cursor-pointer" title="Hapus Voucher">✕</button>
+<button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-400 hover:text-rose-600 text-xs bg-white/80 hover:bg-rose-100 w-6 h-6 rounded-full flex items-center justify-center transition z-20 cursor-pointer shadow-sm" title="Hapus Voucher">✕</button>
 <div class="notch-top"></div>
 <div class="notch-bottom"></div>
 <div class="notch-left"></div>
 <div class="notch-right"></div>
-<div class="w-full sm:w-[120px] shrink-0 bg-gradient-to-r sm:bg-gradient-to-b from-rose-600 via-rose-700 to-pink-800 p-3 sm:p-4 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-left sm:text-center relative border-b sm:border-b-0 sm:border-r border-rose-400/20">
+<div class="w-full sm:w-[120px] shrink-0 bg-gradient-to-r sm:bg-gradient-to-b from-rose-400 via-rose-500 to-pink-500 p-3 sm:p-4 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-left sm:text-center relative border-b sm:border-b-0 sm:border-r border-rose-300/30">
 <div class="flex items-center sm:flex-col gap-2 sm:gap-0">
 <span class="text-xl sm:text-2xl sm:mb-1">💆‍♀️</span>
-<span class="text-white font-extrabold text-base sm:text-lg leading-tight tracking-tight">100%<br class="hidden sm:inline"/><span class="text-xs tracking-wider text-rose-200 uppercase font-sans ml-1 sm:ml-0">GRATIS</span></span>
+<span class="text-white font-extrabold text-base sm:text-lg leading-tight tracking-tight">100%<br class="hidden sm:inline"/><span class="text-xs tracking-wider text-rose-100 uppercase font-sans ml-1 sm:ml-0">GRATIS</span></span>
 </div>
-<div class="text-[9px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+<div class="text-[9px] font-bold text-white/90 bg-black/15 px-2 py-0.5 rounded-full uppercase tracking-wider">
   RELAX VIP
 </div>
 </div>
 <div class="flex-1 p-3.5 sm:p-4 pl-3.5 sm:pl-5 flex flex-col justify-between voucher-divider">
 <div>
 <div class="flex items-center justify-between gap-2 mb-1 pr-6 sm:pr-4">
-<span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/15 border border-amber-400/30 px-1.5 py-0.5 rounded">
+<span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-amber-600 bg-amber-100 border border-amber-300/60 px-1.5 py-0.5 rounded">
       SPESIAL ULANG TAHUN
     </span>
-<span class="text-[9px] sm:text-[10px] text-rose-200/60 font-mono">CODE: PIJAT-60M</span>
+<span class="text-[9px] sm:text-[10px] text-rose-400/90 font-mono">CODE: PIJAT-60M</span>
 </div>
-<h4 class="text-xs sm:text-base font-bold text-white font-sans tracking-tight">
+<h4 class="text-xs sm:text-base font-bold text-rose-900 font-sans tracking-tight">
     VOUCHER PIJAT 60 MENIT
   </h4>
-<p class="text-rose-200/70 text-[11px] sm:text-xs mt-1 leading-snug">
+<p class="text-rose-600/90 text-[11px] sm:text-xs mt-1 leading-snug">
     Bebas minta pijat bahu, leher, punggung, atau kaki kapan saja saat capek. Full service suami!
   </p>
-<div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] text-rose-300/80 mt-2 font-light">
+<div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] text-rose-500/90 mt-2 font-light">
 <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Min. Belanja: 0 Sayang</span>
 <span>•</span>
 <span>Berlaku Selamanya</span>
 </div>
 </div>
-<div class="mt-3 pt-2.5 sm:pt-3 border-t border-white/10 flex items-center justify-between gap-2">
-<span class="text-[9px] sm:text-[10px] text-rose-300/50 italic truncate">S&amp;K: Suami wajib siap &amp; tersenyum</span>
+<div class="mt-3 pt-2.5 sm:pt-3 border-t border-rose-200/60 flex items-center justify-between gap-2">
+<span class="text-[9px] sm:text-[10px] text-rose-400/80 italic truncate">S&amp;K: Suami wajib siap &amp; tersenyum</span>
 <button class="claim-btn px-3 py-1.5 sm:px-4 sm:py-1.5 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold text-[10px] sm:text-xs rounded-lg shadow-md hover:shadow-rose-500/30 transition-all flex items-center gap-1.5 shrink-0 cursor-pointer" onclick="claimCoupon(this, 'Pijat 60 Menit')">
 <span>KLAIM SEKARANG</span>
 </button>
@@ -455,42 +469,42 @@ Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yan
 
 <!-- Voucher 2 -->
 <div class="voucher-card rounded-2xl flex flex-col sm:flex-row overflow-hidden relative">
-<button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-300/60 hover:text-rose-200 text-xs bg-black/40 hover:bg-rose-900/60 w-6 h-6 rounded-full flex items-center justify-center transition z-20 cursor-pointer" title="Hapus Voucher">✕</button>
+<button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-400 hover:text-rose-600 text-xs bg-white/80 hover:bg-rose-100 w-6 h-6 rounded-full flex items-center justify-center transition z-20 cursor-pointer shadow-sm" title="Hapus Voucher">✕</button>
 <div class="notch-top"></div>
 <div class="notch-bottom"></div>
 <div class="notch-left"></div>
 <div class="notch-right"></div>
-<div class="w-full sm:w-[120px] shrink-0 bg-gradient-to-r sm:bg-gradient-to-b from-amber-600 via-rose-700 to-rose-800 p-3 sm:p-4 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-left sm:text-center relative border-b sm:border-b-0 sm:border-r border-rose-400/20">
+<div class="w-full sm:w-[120px] shrink-0 bg-gradient-to-r sm:bg-gradient-to-b from-amber-400 via-rose-400 to-rose-500 p-3 sm:p-4 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-left sm:text-center relative border-b sm:border-b-0 sm:border-r border-rose-300/30">
 <div class="flex items-center sm:flex-col gap-2 sm:gap-0">
 <span class="text-xl sm:text-2xl sm:mb-1">👑🍽️</span>
-<span class="text-white font-extrabold text-sm sm:text-base leading-tight tracking-tight">TRAKTIR<br class="hidden sm:inline"/><span class="text-xs tracking-wider text-amber-200 uppercase font-sans ml-1 sm:ml-0">KENYANG</span></span>
+<span class="text-white font-extrabold text-sm sm:text-base leading-tight tracking-tight">TRAKTIR<br class="hidden sm:inline"/><span class="text-xs tracking-wider text-amber-100 uppercase font-sans ml-1 sm:ml-0">KENYANG</span></span>
 </div>
-<div class="text-[9px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+<div class="text-[9px] font-bold text-white/90 bg-black/15 px-2 py-0.5 rounded-full uppercase tracking-wider">
   FOOD PASS
 </div>
 </div>
 <div class="flex-1 p-3.5 sm:p-4 pl-3.5 sm:pl-5 flex flex-col justify-between voucher-divider">
 <div>
 <div class="flex items-center justify-between gap-2 mb-1 pr-6 sm:pr-4">
-<span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/15 border border-amber-400/30 px-1.5 py-0.5 rounded">
+<span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-amber-600 bg-amber-100 border border-amber-300/60 px-1.5 py-0.5 rounded">
       GRATIS ONGKIR &amp; MAKAN
     </span>
-<span class="text-[9px] sm:text-[10px] text-rose-200/60 font-mono">CODE: BEBAS-MAKAN</span>
+<span class="text-[9px] sm:text-[10px] text-rose-400/90 font-mono">CODE: BEBAS-MAKAN</span>
 </div>
-<h4 class="text-xs sm:text-base font-bold text-white font-sans tracking-tight">
+<h4 class="text-xs sm:text-base font-bold text-rose-900 font-sans tracking-tight">
     BEBAS PILIH MAKANAN &amp; RESTO
   </h4>
-<p class="text-rose-200/70 text-[11px] sm:text-xs mt-1 leading-snug">
+<p class="text-rose-600/90 text-[11px] sm:text-xs mt-1 leading-snug">
     Suami dilarang bilang "terserah". Istri bebas pilih resto / cafe favorit, suami siap bayar dan temani.
   </p>
-<div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] text-rose-300/80 mt-2 font-light">
+<div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] text-rose-500/90 mt-2 font-light">
 <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Tanpa Batas Porsi</span>
 <span>•</span>
 <span>Sampai Kakek Nenek</span>
 </div>
 </div>
-<div class="mt-3 pt-2.5 sm:pt-3 border-t border-white/10 flex items-center justify-between gap-2">
-<span class="text-[9px] sm:text-[10px] text-rose-300/50 italic truncate">S&amp;K: Suami wajib bersedia bayar</span>
+<div class="mt-3 pt-2.5 sm:pt-3 border-t border-rose-200/60 flex items-center justify-between gap-2">
+<span class="text-[9px] sm:text-[10px] text-rose-400/80 italic truncate">S&amp;K: Suami wajib bersedia bayar</span>
 <button class="claim-btn px-3 py-1.5 sm:px-4 sm:py-1.5 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold text-[10px] sm:text-xs rounded-lg shadow-md hover:shadow-rose-500/30 transition-all flex items-center gap-1.5 shrink-0 cursor-pointer" onclick="claimCoupon(this, 'Bebas Pilih Makanan')">
 <span>KLAIM SEKARANG</span>
 </button>
@@ -500,42 +514,42 @@ Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yan
 
 <!-- Voucher 3 -->
 <div class="voucher-card rounded-2xl flex flex-col sm:flex-row overflow-hidden relative">
-<button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-300/60 hover:text-rose-200 text-xs bg-black/40 hover:bg-rose-900/60 w-6 h-6 rounded-full flex items-center justify-center transition z-20 cursor-pointer" title="Hapus Voucher">✕</button>
+<button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-400 hover:text-rose-600 text-xs bg-white/80 hover:bg-rose-100 w-6 h-6 rounded-full flex items-center justify-center transition z-20 cursor-pointer shadow-sm" title="Hapus Voucher">✕</button>
 <div class="notch-top"></div>
 <div class="notch-bottom"></div>
 <div class="notch-left"></div>
 <div class="notch-right"></div>
-<div class="w-full sm:w-[120px] shrink-0 bg-gradient-to-r sm:bg-gradient-to-b from-rose-500 via-pink-600 to-rose-800 p-3 sm:p-4 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-left sm:text-center relative border-b sm:border-b-0 sm:border-r border-rose-400/20">
+<div class="w-full sm:w-[120px] shrink-0 bg-gradient-to-r sm:bg-gradient-to-b from-rose-400 via-pink-400 to-rose-500 p-3 sm:p-4 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-left sm:text-center relative border-b sm:border-b-0 sm:border-r border-rose-300/30">
 <div class="flex items-center sm:flex-col gap-2 sm:gap-0">
 <span class="text-xl sm:text-2xl sm:mb-1">🛍️✨</span>
-<span class="text-white font-extrabold text-sm sm:text-base leading-tight tracking-tight">SHOPPING<br class="hidden sm:inline"/><span class="text-xs tracking-wider text-rose-200 uppercase font-sans ml-1 sm:ml-0">SPREE</span></span>
+<span class="text-white font-extrabold text-sm sm:text-base leading-tight tracking-tight">SHOPPING<br class="hidden sm:inline"/><span class="text-xs tracking-wider text-rose-100 uppercase font-sans ml-1 sm:ml-0">SPREE</span></span>
 </div>
-<div class="text-[9px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+<div class="text-[9px] font-bold text-white/90 bg-black/15 px-2 py-0.5 rounded-full uppercase tracking-wider">
   SULTANAH
 </div>
 </div>
 <div class="flex-1 p-3.5 sm:p-4 pl-3.5 sm:pl-5 flex flex-col justify-between voucher-divider">
 <div>
 <div class="flex items-center justify-between gap-2 mb-1 pr-6 sm:pr-4">
-<span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-pink-300 bg-pink-400/15 border border-pink-400/30 px-1.5 py-0.5 rounded">
+<span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-pink-600 bg-pink-100 border border-pink-300/60 px-1.5 py-0.5 rounded">
       UNLIMITED LOVE
     </span>
-<span class="text-[9px] sm:text-[10px] text-rose-200/60 font-mono">CODE: BELANJA-SERU</span>
+<span class="text-[9px] sm:text-[10px] text-rose-400/90 font-mono">CODE: BELANJA-SERU</span>
 </div>
-<h4 class="text-xs sm:text-base font-bold text-white font-sans tracking-tight">
+<h4 class="text-xs sm:text-base font-bold text-rose-900 font-sans tracking-tight">
     JALAN-JALAN &amp; BELANJA SEPUASNYA
   </h4>
-<p class="text-rose-200/70 text-[11px] sm:text-xs mt-1 leading-snug">
+<p class="text-rose-600/90 text-[11px] sm:text-xs mt-1 leading-snug">
     Suami siap jadi supir pribadi, bawain kantong belanjaan dan setia nemenin keliling mall tanpa komplain!
   </p>
-<div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] text-rose-300/80 mt-2 font-light">
+<div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] text-rose-500/90 mt-2 font-light">
 <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Cashback: Senyuman Manis</span>
 <span>•</span>
 <span>Aktif Seumur Hidup</span>
 </div>
 </div>
-<div class="mt-3 pt-2.5 sm:pt-3 border-t border-white/10 flex items-center justify-between gap-2">
-<span class="text-[9px] sm:text-[10px] text-rose-300/50 italic truncate">S&amp;K: Suami sabar level maksimal</span>
+<div class="mt-3 pt-2.5 sm:pt-3 border-t border-rose-200/60 flex items-center justify-between gap-2">
+<span class="text-[9px] sm:text-[10px] text-rose-400/80 italic truncate">S&amp;K: Suami sabar level maksimal</span>
 <button class="claim-btn px-3 py-1.5 sm:px-4 sm:py-1.5 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold text-[10px] sm:text-xs rounded-lg shadow-md hover:shadow-rose-500/30 transition-all flex items-center gap-1.5 shrink-0 cursor-pointer" onclick="claimCoupon(this, 'Jalan-Jalan Belanja')">
 <span>KLAIM SEKARANG</span>
 </button>
@@ -544,11 +558,11 @@ Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yan
 </div>
 </div>
 
-<div class="flex flex-col sm:flex-row items-center justify-between pt-4 sm:pt-6 border-t border-white/10 text-[10px] sm:text-xs text-rose-300/70 gap-2 text-center sm:text-left">
+<div class="flex flex-col sm:flex-row items-center justify-between pt-4 sm:pt-6 border-t border-rose-200/70 text-[10px] sm:text-xs text-rose-500/90 gap-2 text-center sm:text-left">
 <div>
 <span>Dibuat dengan segenap rasa cinta oleh suamimu yang tersayang 💕</span>
 </div>
-<button class="hover:text-white underline transition cursor-pointer" onclick="restartExperience()">
+<button class="hover:text-rose-800 underline transition cursor-pointer" onclick="restartExperience()">
         Ulangi Pengalaman Dari Awal
 </button>
 </div>
@@ -556,42 +570,42 @@ Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yan
 
 <!-- MODAL ADD COUPON -->
 <div class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 hidden" id="add-coupon-modal">
-<div class="glass-panel w-full max-w-md p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#240813] border border-rose-500/40 text-left shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+<div class="glass-panel w-full max-w-md p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/95 border border-rose-300/60 text-left shadow-2xl animate-in fade-in zoom-in-95 duration-200">
 <div class="flex items-center justify-between mb-3 sm:mb-4">
-<h3 class="text-base sm:text-lg font-bold text-white font-serif flex items-center gap-2">
+<h3 class="text-base sm:text-lg font-bold text-rose-800 font-serif flex items-center gap-2">
 <span>🎟️ Buat Voucher E-Commerce Cinta</span>
 </h3>
-<button class="text-rose-300 hover:text-white text-lg cursor-pointer" onclick="closeAddCouponModal()">✕</button>
+<button class="text-rose-400 hover:text-rose-700 text-lg cursor-pointer" onclick="closeAddCouponModal()">✕</button>
 </div>
 <div class="space-y-3 sm:space-y-4 text-xs">
 <div>
-<label class="block text-rose-200 font-semibold mb-1">Judul Voucher / Hadiah</label>
-<input class="w-full p-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-rose-300/40 focus:outline-none focus:ring-2 focus:ring-rose-500" id="modal-coupon-title" placeholder="Contoh: Voucher Liburan &amp; Healing Berdua" type="text"/>
+<label class="block text-rose-700 font-semibold mb-1">Judul Voucher / Hadiah</label>
+<input class="w-full p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 placeholder-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400" id="modal-coupon-title" placeholder="Contoh: Voucher Liburan &amp; Healing Berdua" type="text"/>
 </div>
 <div>
-<label class="block text-rose-200 font-semibold mb-1">Deskripsi / Janji Suami</label>
-<textarea class="w-full p-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-rose-300/40 focus:outline-none focus:ring-2 focus:ring-rose-500 resize-none" id="modal-coupon-desc" placeholder="Contoh: Suami siap siapin tiket, packing koper, dan nyetir mobil kemanapun istri mau..." rows="3"></textarea>
+<label class="block text-rose-700 font-semibold mb-1">Deskripsi / Janji Suami</label>
+<textarea class="w-full p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 placeholder-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400 resize-none" id="modal-coupon-desc" placeholder="Contoh: Suami siap siapin tiket, packing koper, dan nyetir mobil kemanapun istri mau..." rows="3"></textarea>
 </div>
 <div>
-<label class="block text-rose-200 font-semibold mb-1">Badge Teks Sisi Kiri (Singkat)</label>
-<input class="w-full p-2 rounded-xl bg-white/10 border border-white/20 text-white placeholder-rose-300/40 focus:outline-none focus:ring-2 focus:ring-rose-500" id="modal-coupon-badge" placeholder="Contoh: HEALING 100%" type="text"/>
+<label class="block text-rose-700 font-semibold mb-1">Badge Teks Sisi Kiri (Singkat)</label>
+<input class="w-full p-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 placeholder-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-400" id="modal-coupon-badge" placeholder="Contoh: HEALING 100%" type="text"/>
 </div>
 <div>
-<label class="block text-rose-200 font-semibold mb-1">Pilih Icon Emoji</label>
+<label class="block text-rose-700 font-semibold mb-1">Pilih Icon Emoji</label>
 <div class="flex gap-2">
-<button class="emoji-opt w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 hover:bg-rose-500/30 border border-white/20 flex items-center justify-center text-base sm:text-lg active-emoji ring-2 ring-rose-500" onclick="selectEmoji(this)" type="button">🏝️</button>
-<button class="emoji-opt w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 hover:bg-rose-500/30 border border-white/20 flex items-center justify-center text-base sm:text-lg" onclick="selectEmoji(this)" type="button">☕</button>
-<button class="emoji-opt w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 hover:bg-rose-500/30 border border-white/20 flex items-center justify-center text-base sm:text-lg" onclick="selectEmoji(this)" type="button">🎬</button>
-<button class="emoji-opt w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 hover:bg-rose-500/30 border border-white/20 flex items-center justify-center text-base sm:text-lg" onclick="selectEmoji(this)" type="button">💐</button>
-<button class="emoji-opt w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 hover:bg-rose-500/30 border border-white/20 flex items-center justify-center text-base sm:text-lg" onclick="selectEmoji(this)" type="button">🚗</button>
+<button class="emoji-opt w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-rose-50 hover:bg-rose-200 border border-rose-200 flex items-center justify-center text-base sm:text-lg active-emoji ring-2 ring-rose-400" onclick="selectEmoji(this)" type="button">🏝️</button>
+<button class="emoji-opt w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-rose-50 hover:bg-rose-200 border border-rose-200 flex items-center justify-center text-base sm:text-lg" onclick="selectEmoji(this)" type="button">☕</button>
+<button class="emoji-opt w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-rose-50 hover:bg-rose-200 border border-rose-200 flex items-center justify-center text-base sm:text-lg" onclick="selectEmoji(this)" type="button">🎬</button>
+<button class="emoji-opt w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-rose-50 hover:bg-rose-200 border border-rose-200 flex items-center justify-center text-base sm:text-lg" onclick="selectEmoji(this)" type="button">💐</button>
+<button class="emoji-opt w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-rose-50 hover:bg-rose-200 border border-rose-200 flex items-center justify-center text-base sm:text-lg" onclick="selectEmoji(this)" type="button">🚗</button>
 </div>
 </div>
 </div>
 <div class="mt-5 sm:mt-6 flex justify-end gap-2">
-<button class="px-4 py-2 rounded-xl text-rose-200 hover:text-white bg-white/5 text-xs font-semibold cursor-pointer" onclick="closeAddCouponModal()">
+<button class="px-4 py-2 rounded-xl text-rose-600 hover:text-rose-900 bg-rose-50 text-xs font-semibold cursor-pointer" onclick="closeAddCouponModal()">
           Batal
 </button>
-<button class="px-5 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold shadow-lg shadow-rose-600/40 cursor-pointer" onclick="saveNewCoupon()">
+<button class="px-5 py-2 rounded-xl bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold shadow-lg shadow-rose-400/40 cursor-pointer" onclick="saveNewCoupon()">
           Terbitkan Voucher
 </button>
 </div>
@@ -607,10 +621,11 @@ Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yan
 
     // --- Ambient Particle Creator ---
     const ambientContainer = document.getElementById('ambient-particles');
-    for (let i = 0; i < 20; i++) {
+    const ambientSymbols = ['❤️', '🌸', '🌷', '💮', '🌺', '💕'];
+    for (let i = 0; i < 24; i++) {
       const p = document.createElement('div');
       p.className = 'bg-heart-particle';
-      p.innerHTML = '❤️';
+      p.innerHTML = ambientSymbols[Math.floor(Math.random() * ambientSymbols.length)];
       p.style.left = Math.random() * 100 + 'vw';
       p.style.animationDelay = (Math.random() * 8) + 's';
       p.style.fontSize = (Math.random() * 20 + 14) + 'px';
@@ -825,7 +840,7 @@ Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yan
         if (i <= stepNum) {
           dot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 shadow-[0_0_8px_#f43f5e] transition-all duration-300';
         } else {
-          dot.className = 'w-2 h-2 rounded-full bg-white/20 transition-all duration-300';
+          dot.className = 'w-2 h-2 rounded-full bg-rose-300/50 transition-all duration-300';
         }
       }
     }
@@ -1073,7 +1088,7 @@ Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yan
       });
 
       btn.disabled = true;
-      btn.className = "claim-btn px-3 py-1.5 sm:px-4 sm:py-1.5 bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 text-[10px] sm:text-xs font-bold rounded-lg flex items-center gap-1.5 cursor-default shadow-sm transition-all";
+      btn.className = "claim-btn px-3 py-1.5 sm:px-4 sm:py-1.5 bg-emerald-100 text-emerald-700 border border-emerald-400/60 text-[10px] sm:text-xs font-bold rounded-lg flex items-center gap-1.5 cursor-default shadow-sm transition-all";
       btn.innerHTML = `<svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg><span>TERKLAIM / PAKAI</span>`;
     }
 
@@ -1113,18 +1128,18 @@ Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yan
       const voucherCard = document.createElement('div');
       voucherCard.className = "voucher-card rounded-2xl flex flex-col sm:flex-row overflow-hidden relative animate-in fade-in zoom-in-95";
       voucherCard.innerHTML = `
-        <button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-300/60 hover:text-rose-200 text-xs bg-black/40 hover:bg-rose-900/60 w-6 h-6 rounded-full flex items-center justify-center transition z-20 cursor-pointer" title="Hapus Voucher">✕</button>
+        <button onclick="removeCoupon(this)" class="absolute top-2 right-2 text-rose-400 hover:text-rose-600 text-xs bg-white/80 hover:bg-rose-100 w-6 h-6 rounded-full flex items-center justify-center transition z-20 cursor-pointer shadow-sm" title="Hapus Voucher">✕</button>
         <div class="notch-top"></div>
         <div class="notch-bottom"></div>
         <div class="notch-left"></div>
         <div class="notch-right"></div>
         
-        <div class="w-full sm:w-[120px] shrink-0 bg-gradient-to-r sm:bg-gradient-to-b from-pink-600 via-rose-700 to-rose-900 p-3 sm:p-4 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-left sm:text-center relative border-b sm:border-b-0 sm:border-r border-rose-400/20">
+        <div class="w-full sm:w-[120px] shrink-0 bg-gradient-to-r sm:bg-gradient-to-b from-pink-400 via-rose-400 to-rose-500 p-3 sm:p-4 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-left sm:text-center relative border-b sm:border-b-0 sm:border-r border-rose-300/30">
           <div class="flex items-center sm:flex-col gap-2 sm:gap-0">
             <span class="text-xl sm:text-2xl sm:mb-1">${selectedEmojiChar}</span>
             <span class="text-white font-extrabold text-xs sm:text-sm leading-tight tracking-tight">${badge.toUpperCase()}</span>
           </div>
-          <div class="text-[9px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+          <div class="text-[9px] font-bold text-white/90 bg-black/15 px-2 py-0.5 rounded-full uppercase tracking-wider">
             PASS #${count}
           </div>
         </div>
@@ -1132,26 +1147,26 @@ Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yan
         <div class="flex-1 p-3.5 sm:p-4 pl-3.5 sm:pl-5 flex flex-col justify-between voucher-divider">
           <div>
             <div class="flex items-center justify-between gap-2 mb-1 pr-6 sm:pr-4">
-              <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/15 border border-amber-400/30 px-1.5 py-0.5 rounded">
+              <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-amber-600 bg-amber-100 border border-amber-300/60 px-1.5 py-0.5 rounded">
                 KADO SPESIAL SUAMI
               </span>
-              <span class="text-[9px] sm:text-[10px] text-rose-200/60 font-mono">${code}</span>
+              <span class="text-[9px] sm:text-[10px] text-rose-400/90 font-mono">${code}</span>
             </div>
-            <h4 class="text-xs sm:text-base font-bold text-white font-sans tracking-tight">
+            <h4 class="text-xs sm:text-base font-bold text-rose-900 font-sans tracking-tight">
               ${title.toUpperCase()}
             </h4>
-            <p class="text-rose-200/70 text-[11px] sm:text-xs mt-1 leading-snug">
+            <p class="text-rose-600/90 text-[11px] sm:text-xs mt-1 leading-snug">
               ${desc || 'Voucher kasih sayang spesial yang dibuat khusus oleh suamimu tercinta.'}
             </p>
-            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] text-rose-300/80 mt-2 font-light">
+            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] text-rose-500/90 mt-2 font-light">
               <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Min. Belanja: 0 Sayang</span>
               <span>•</span>
               <span>Berlaku Selamanya</span>
             </div>
           </div>
 
-          <div class="mt-3 pt-2.5 sm:pt-3 border-t border-white/10 flex items-center justify-between gap-2">
-            <span class="text-[9px] sm:text-[10px] text-rose-300/50 italic truncate">S&amp;K: Suami wajib turuti tanpa syarat</span>
+          <div class="mt-3 pt-2.5 sm:pt-3 border-t border-rose-200/60 flex items-center justify-between gap-2">
+            <span class="text-[9px] sm:text-[10px] text-rose-400/80 italic truncate">S&amp;K: Suami wajib turuti tanpa syarat</span>
             <button class="claim-btn px-3 py-1.5 sm:px-4 sm:py-1.5 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold text-[10px] sm:text-xs rounded-lg shadow-md hover:shadow-rose-500/30 transition-all flex items-center gap-1.5 shrink-0 cursor-pointer" onclick="claimCoupon(this, '${title.replace(/'/g, "\\'")}')">
               <span>KLAIM SEKARANG</span>
             </button>
